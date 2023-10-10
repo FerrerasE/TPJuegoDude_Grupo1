@@ -1,6 +1,8 @@
+import Escena0 from "./escenas/Escena0.js"
 import Escena1 from "./escenas/Escena1.js"
 import GameOver from "./escenas/GameOver.js"
 import Menu from "./escenas/Menu.js"
+import Win from "./escenas/Win.js"
 let config = {
     type: Phaser.AUTO,
     width: 800,
@@ -12,6 +14,6 @@ let config = {
             debug:false
         }
     },
-    scene:[Menu,Escena1,GameOver]
+    scene:[Menu,Escena0,Escena1,GameOver,Win]
 }
 let game = new Phaser.Game(config);

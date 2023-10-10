@@ -1,6 +1,7 @@
 class Menu extends Phaser.Scene {
     constructor() {
         super("Menu");
+        this.score=0;
     }
 
     preload() {
@@ -28,7 +29,7 @@ class Menu extends Phaser.Scene {
 
         // un evento de clic para el botón
         startButton.on('pointerdown', () => {
-            this.scene.start('Escena1'); // Inicia la escena principal cuando se hace clic
+            this.scene.start('Escena0'); // Inicia la escena principal cuando se hace clic
         });
     }
 }

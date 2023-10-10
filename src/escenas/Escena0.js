@@ -1,11 +1,11 @@
 
-class Escena1 extends Phaser.Scene{
+class Escena0 extends Phaser.Scene{
 
     constructor(){
-        super("Escena1");
+        super("Escena0");
         this.platforms = null;
         this.scoreText="";
-        this.score=400;
+        this.score=0;
         
     }
     
@@ -20,14 +20,14 @@ class Escena1 extends Phaser.Scene{
         this.load.spritesheet('dude', '../public/img/dude.png', { frameWidth: 32, frameHeight: 48 });
         }
     create(){
-            this.add.image(400, 300, 'rojo').setScale(2);
+            this.add.image(400, 300, 'sky').setScale(2);
             this.platforms = this.physics.add.staticGroup();
-            this.platforms.create(400, 568, 'Suelo').setScale(2).refreshBody();
-            this.platforms.create(600, 400, 'Suelo');
-            this.platforms.create(50, 100, 'Suelo');
-            this.platforms.create(750, 280, 'Suelo');
-            this.platforms.create(800, 100, 'Suelo');
-            this.platforms.create(50, 250, 'Suelo');
+            this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+            this.platforms.create(600, 400, 'ground');
+            //this.platforms.create(50, 100, 'ground');
+            this.platforms.create(50, 280, 'ground');
+            //this.platforms.create(800, 100, 'ground');
+            //this.platforms.create(50, 250, 'ground');
 
             this.player = this.physics.add.sprite(100,30,'dude');
 
@@ -106,13 +106,12 @@ class Escena1 extends Phaser.Scene{
         //Colisión entre el jugador y las estrellas
     collectStar(player, star) {
          star.disableBody(true, true);
-         this.score = this.score+10;
+         this.score += 10;
          this.scoreText.setText('Puntaje: ' + this.score);
-
-         //para pasar al escenario donde ganas el juego
-         if (this.score == 820) {
-            this.scene.start('Win');
-            this.score =0;
+         
+         //para pasar al otro nivel
+         if (this.score == 420) {
+            this.scene.start('Escena1');
             
          }
 
@@ -123,24 +122,19 @@ class Escena1 extends Phaser.Scene{
          });
          let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : 
          Phaser.Math.Between(0, 400);
-         let bomb = this.bombs.create(x, 16, 'bombax').setScale(0.2).refreshBody();
-         let bomb2 = this.bombs.create(x, 100, 'bombax').setScale(0.2).refreshBody();
+         let bomb = this.bombs.create(x, 16, 'bomb');
+         //.setScale(0.2).refreshBody()
          bomb.setBounce(1);
          bomb.setCollideWorldBounds(true);
-         bomb.setVelocity(Phaser.Math.Between(-600, 600), 20);
-
-         bomb2.setBounce(1);
-         bomb2.setCollideWorldBounds(true);
-         bomb2.setVelocity(Phaser.Math.Between(-600, 600), 20);
+         bomb.setVelocity(Phaser.Math.Between(-300, 300), 10);
          }
         }
 
-    hitBomb(player, bomb, bomb2) {
+    hitBomb(player, bomb) {
             this.physics.pause();
             player.setTint(0xff0000);
             player.anims.play('turn');
-            
-            //si la bomba nos golpea, perderemos y pasaremos a la escena de gameover
+            //GameOver = true;
             this.scene.start('GameOver');
             this.score =0;
             }
@@ -154,4 +148,4 @@ class Escena1 extends Phaser.Scene{
 
 }
 
-export default Escena1;
+export default Escena0;

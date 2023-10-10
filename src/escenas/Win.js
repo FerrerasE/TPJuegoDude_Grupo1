@@ -1,18 +1,18 @@
-class GameOver extends Phaser.Scene {
+class Win extends Phaser.Scene {
     constructor() {
-        super("GameOver"); // El nombre de la escena
+        super("Win"); // El nombre de la escena
         this.score=0;
     }
 
     preload() {
         // Carga la imagen de fondo
-        this.load.image('menuBackground', '../public/img/gameOver.jpeg'); // Reemplaza '....' con la ruta correcta
+        this.load.image('fin', '../public/img/ganaste.jpg'); // Reemplaza '....' con la ruta correcta
 
     }
 
     create() {
         
-        this.add.image(400, 300, 'menuBackground'); // Ajusta las coordenadas y el nombre de la imagen
+        this.add.image(400, 300, 'fin'); // Ajusta las coordenadas y el nombre de la imagen
 
         // Para gregar texto
         
@@ -26,10 +26,10 @@ class GameOver extends Phaser.Scene {
         });*/
 
         //  botón para regresar al menu
-        const startButton = this.add.text(400, 420, 'Pulse para volver al Menu', {
-            fontSize: '32px',
+        const startButton = this.add.text(400, 30, 'Pulse para regresar al menu', {
+            fontSize: '40px',
             fill: '#fff',
-            backgroundColor: '#bdecb6', // Color de fondo del botón
+            backgroundColor: '#800080', // Color de fondo del botón
             padding: { x: 20, y: 10 }, // Espaciado interno del botón
         });
         
@@ -50,4 +50,4 @@ class GameOver extends Phaser.Scene {
     }*/
 }
 
-export default GameOver;
+export default Win;

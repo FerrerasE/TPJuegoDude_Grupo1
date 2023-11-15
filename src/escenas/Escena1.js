@@ -111,7 +111,7 @@ class Escena1 extends Phaser.Scene{
 
          //para pasar al escenario donde ganas el juego
          if (this.score == 820) {
-            this.scene.start('Win');
+            this.scene.start('Escena2');
             this.score =0;
             
          }

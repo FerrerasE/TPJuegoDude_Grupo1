@@ -24,7 +24,7 @@ class Escena1 extends Phaser.Scene{
             this.platforms = this.physics.add.staticGroup();
             this.platforms.create(400, 568, 'Suelo').setScale(2).refreshBody();
             this.platforms.create(600, 400, 'Suelo');
-            this.platforms.create(50, 100, 'Suelo');
+            this.platforms.create(30, 100, 'Suelo');
             this.platforms.create(750, 280, 'Suelo');
             this.platforms.create(800, 100, 'Suelo');
             this.platforms.create(50, 250, 'Suelo');

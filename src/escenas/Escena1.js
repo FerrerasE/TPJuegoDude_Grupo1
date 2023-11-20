@@ -4,8 +4,8 @@ class Escena1 extends Phaser.Scene{
     constructor(){
         super("Escena1");
         this.platforms = null;
-        this.scoreText="";
-        this.score=400;
+       // this.scoreText="";
+        this.score=420;
         
     }
     
@@ -110,9 +110,9 @@ class Escena1 extends Phaser.Scene{
          this.scoreText.setText('Puntaje: ' + this.score);
 
          //para pasar al escenario donde ganas el juego
-         if (this.score == 820) {
+         if (this.score == 840) {
             this.scene.start('Escena2');
-            this.score =0;
+            this.score =420;
             
          }
 
@@ -142,7 +142,7 @@ class Escena1 extends Phaser.Scene{
             
             //si la bomba nos golpea, perderemos y pasaremos a la escena de gameover
             this.scene.start('GameOver');
-            this.score =0;
+            this.score =420;
             }
                 
 

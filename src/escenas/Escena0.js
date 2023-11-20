@@ -112,6 +112,7 @@ class Escena0 extends Phaser.Scene{
          //para pasar al otro nivel
          if (this.score == 420) {
             this.scene.start('Escena1');
+              this.score =0;
             
          }
 

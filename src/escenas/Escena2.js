@@ -2,8 +2,8 @@ class Escena2 extends Phaser.Scene {
     constructor() {
         super("Escena2");
         this.platforms = null;
-       this.scoreText = "";
-       this.score = 0;
+       //this.scoreText = "";
+      // this.score = 0;
         this.tiempoRestante = 60; // Tiempo en segundos
         this.tiempoTexto = null;
         this.timerEvent = null;
@@ -94,6 +94,9 @@ class Escena2 extends Phaser.Scene {
         bomb2.setCollideWorldBounds(true);
         bomb2.setVelocity(Phaser.Math.Between(-600, 200), 10);
     }
+     resetTimer() {
+        this.tiempoRestante = 60;
+    }
 
     update() {
         if (this.cursors.left.isDown) {
@@ -126,16 +129,17 @@ class Escena2 extends Phaser.Scene {
 
     collectCofre(player, cofre) {
         this.timerEvent.remove(false); // Detiene el temporizador al llegar al cofre
+         this.resetTimer(); // Restablece el temporizador
         this.scene.start('Win');
-        this.score = 0;
+    
     }
 
-    actualizarTiempo() {
+   actualizarTiempo() {
         this.tiempoRestante--;
-
+    
         if (this.tiempoRestante <= 0) {
-            this.timerEvent.remove(false); // Detiene el temporizador si se agota el tiempo
-            this.scene.start('GameOver'); // Cambia a una escena de Game Over 
+            this.resetTimer(); // Restablece el temporizador
+            this.scene.start('GameOver');
         } else {
             this.tiempoTexto.setText('Tiempo: ' + this.tiempoRestante);
         }
@@ -147,7 +151,7 @@ class Escena2 extends Phaser.Scene {
         player.anims.play('turn');
         //si la bomba nos golpea, perderemos y pasaremos a la escena de gameover
         this.scene.start('GameOver');
-        this.score =0;
+       // this.score =0;
         }
 }
 

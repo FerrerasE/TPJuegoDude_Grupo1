@@ -1,7 +1,7 @@
 class Win extends Phaser.Scene {
     constructor() {
         super("Win"); // El nombre de la escena
-        this.score=0;
+      //  this.score=0;
     }
 
     preload() {
